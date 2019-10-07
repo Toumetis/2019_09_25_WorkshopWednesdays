@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Table of Contents
-#  <p><div class="lev1 toc-item"><a href="#Exploratory-Data-Analysis" data-toc-modified-id="Exploratory-Data-Analysis-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Exploratory Data Analysis</a></div><div class="lev2 toc-item"><a href="#Check-data-index" data-toc-modified-id="Check-data-index-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Check data index</a></div><div class="lev2 toc-item"><a href="#Missing/null-values" data-toc-modified-id="Missing/null-values-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Missing/null values</a></div><div class="lev2 toc-item"><a href="#Visualise-some-sequences" data-toc-modified-id="Visualise-some-sequences-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Visualise some sequences</a></div><div class="lev2 toc-item"><a href="#Seasonality---do-we-have-any?" data-toc-modified-id="Seasonality---do-we-have-any?-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Seasonality - do we have any?</a></div><div class="lev2 toc-item"><a href="#Group-users-by-usage?" data-toc-modified-id="Group-users-by-usage?-15"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Group users by usage?</a></div><div class="lev2 toc-item"><a href="#Downsample-for-better-visualisation" data-toc-modified-id="Downsample-for-better-visualisation-16"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Downsample for better visualisation</a></div><div class="lev2 toc-item"><a href="#Other-things-that-can-be-done-during-preprocessing" data-toc-modified-id="Other-things-that-can-be-done-during-preprocessing-17"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Other things that can be done during preprocessing</a></div><div class="lev1 toc-item"><a href="#Preparation-for-Classification" data-toc-modified-id="Preparation-for-Classification-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Preparation for Classification</a></div><div class="lev2 toc-item"><a href="#Load-labels" data-toc-modified-id="Load-labels-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Load labels</a></div><div class="lev1 toc-item"><a href="#Random-forest" data-toc-modified-id="Random-forest-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Random forest</a></div><div class="lev2 toc-item"><a href="#Create-features" data-toc-modified-id="Create-features-31"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Create features</a></div><div class="lev3 toc-item"><a href="#Split-into-train-and-test-set" data-toc-modified-id="Split-into-train-and-test-set-311"><span class="toc-item-num">3.1.1&nbsp;&nbsp;</span>Split into train and test set</a></div><div class="lev3 toc-item"><a href="#Classify" data-toc-modified-id="Classify-312"><span class="toc-item-num">3.1.2&nbsp;&nbsp;</span>Classify</a></div><div class="lev3 toc-item"><a href="#Assess-our-results" data-toc-modified-id="Assess-our-results-313"><span class="toc-item-num">3.1.3&nbsp;&nbsp;</span>Assess our results</a></div><div class="lev2 toc-item"><a href="#As-a-comparison-with-a-meaningless-dataset" data-toc-modified-id="As-a-comparison-with-a-meaningless-dataset-32"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>As a comparison with a meaningless dataset</a></div><div class="lev1 toc-item"><a href="#Neural-network-solution" data-toc-modified-id="Neural-network-solution-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Neural network solution</a></div>
+#  <p><div class="lev1 toc-item"><a href="#Import-data" data-toc-modified-id="Import-data-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Import data</a></div><div class="lev2 toc-item"><a href="#If-you-have-got-the-data-stored-locally-on-your-computer" data-toc-modified-id="If-you-have-got-the-data-stored-locally-on-your-computer-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>If you have got the data stored locally on your computer</a></div><div class="lev2 toc-item"><a href="#If-working-with-colab" data-toc-modified-id="If-working-with-colab-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>If working with colab</a></div><div class="lev1 toc-item"><a href="#Exploratory-Data-Analysis" data-toc-modified-id="Exploratory-Data-Analysis-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Exploratory Data Analysis</a></div><div class="lev2 toc-item"><a href="#Check-data-index" data-toc-modified-id="Check-data-index-21"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Check data index</a></div><div class="lev2 toc-item"><a href="#Missing/null-values" data-toc-modified-id="Missing/null-values-22"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Missing/null values</a></div><div class="lev2 toc-item"><a href="#Visualise-some-sequences" data-toc-modified-id="Visualise-some-sequences-23"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Visualise some sequences</a></div><div class="lev2 toc-item"><a href="#Seasonality---do-we-have-any?" data-toc-modified-id="Seasonality---do-we-have-any?-24"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Seasonality - do we have any?</a></div><div class="lev2 toc-item"><a href="#Group-users-by-usage?" data-toc-modified-id="Group-users-by-usage?-25"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>Group users by usage?</a></div><div class="lev2 toc-item"><a href="#Downsample-for-better-visualisation" data-toc-modified-id="Downsample-for-better-visualisation-26"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>Downsample for better visualisation</a></div><div class="lev2 toc-item"><a href="#Other-things-that-can-be-done-during-preprocessing" data-toc-modified-id="Other-things-that-can-be-done-during-preprocessing-27"><span class="toc-item-num">2.7&nbsp;&nbsp;</span>Other things that can be done during preprocessing</a></div><div class="lev1 toc-item"><a href="#Preparation-for-Classification" data-toc-modified-id="Preparation-for-Classification-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Preparation for Classification</a></div><div class="lev2 toc-item"><a href="#Load-labels" data-toc-modified-id="Load-labels-31"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Load labels</a></div><div class="lev1 toc-item"><a href="#Random-forest" data-toc-modified-id="Random-forest-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Random forest</a></div><div class="lev2 toc-item"><a href="#Create-features" data-toc-modified-id="Create-features-41"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Create features</a></div><div class="lev3 toc-item"><a href="#Split-into-train-and-test-set" data-toc-modified-id="Split-into-train-and-test-set-411"><span class="toc-item-num">4.1.1&nbsp;&nbsp;</span>Split into train and test set</a></div><div class="lev3 toc-item"><a href="#Classify" data-toc-modified-id="Classify-412"><span class="toc-item-num">4.1.2&nbsp;&nbsp;</span>Classify</a></div><div class="lev3 toc-item"><a href="#Assess-our-results" data-toc-modified-id="Assess-our-results-413"><span class="toc-item-num">4.1.3&nbsp;&nbsp;</span>Assess our results</a></div><div class="lev2 toc-item"><a href="#As-a-comparison-with-a-meaningless-dataset" data-toc-modified-id="As-a-comparison-with-a-meaningless-dataset-42"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>As a comparison with a meaningless dataset</a></div><div class="lev1 toc-item"><a href="#Neural-network-solution" data-toc-modified-id="Neural-network-solution-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Neural network solution</a></div>
 
 # <a id='top'></a>
 
@@ -24,7 +24,7 @@
 # * First column present date and time as a string with the following format 'yyyy-mm-dd hh:mm:ss' 
 # * Other columns present float values with consumption in kW 
 
-# In[120]:
+# In[ ]:
 
 
 import numpy as np
@@ -33,7 +33,12 @@ import matplotlib.pyplot as plt
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[226]:
+# # Import data
+
+# ## If you have got the data stored locally on your computer
+# Otherwise see further below
+
+# In[ ]:
 
 
 path = '' # fill in correct data path here
@@ -41,54 +46,68 @@ df = pd.read_csv(path + '/ElectricityLoad_Workshop.csv',index_col=0,parse_dates=
 df.head(3)
 
 
-# In[124]:
+# ## If working with colab
+# You will need to download the data from the github repository, and upzip it.   
+# Colab can mount your Google Drive, so you will need to copy the data file you want to work with onto your Google Drive.
+
+# In[ ]:
 
 
-df.dtypes
+# mount you Google Drive --> you will need to click on the link that will come up 
+# and type in the authentication code that will be generated
+from google.colab import drive
+drive.mount('/content/drive')
 
 
-# <a id='eda'></a>
+# In[ ]:
+
+
+# now read in data
+path = '/content/drive/My Drive/your_directory_for_this_workshop' # adjust the path as needed
+df = pd.read_csv(path + '/ElectricityLoad_Workshop.csv',index_col=0,parse_dates=[0])
+df.head(3)
+
 
 # # Exploratory Data Analysis
 
-# In[125]:
+# In[ ]:
 
 
 df.shape
 
 
-# In[126]:
+# In[ ]:
 
 
 df.sample(3)
 
 
-# In[127]:
+# In[ ]:
 
 
 df.describe().round(decimals=2)
 
 
-# In[128]:
+# In[ ]:
 
 
 df.info()
 
 
-# In[129]:
+# In[ ]:
 
 
 print('The data runs from', min(df.index), 'to', max(df.index))
 
 
-# In[130]:
+# In[ ]:
 
 
 # how many data measurements do we have?
 df.shape[0]
 
 
-# In[131]:
+# In[ ]:
 
 
 # how many columns = user entries?
@@ -98,21 +117,21 @@ df.shape[1]
 # ## Check data index
 # Do we have consecutive dates, or are some dates missing?
 
-# In[132]:
+# In[ ]:
 
 
 # step 1: look at datetimes
 df.index
 
 
-# In[133]:
+# In[ ]:
 
 
 # step 2: compute difference between each item and the one after --> creates an array of nanosecond differences
 np.diff(df.index)
 
 
-# In[134]:
+# In[ ]:
 
 
 # step 3: how many unique differences do we have in that array?
@@ -122,20 +141,20 @@ np.unique(np.diff(df.index))
 
 # ## Missing/null values
 
-# In[135]:
+# In[ ]:
 
 
 df.isna().sum()
 
 
-# In[136]:
+# In[ ]:
 
 
 # see all values
 list(df.isna().sum())
 
 
-# In[137]:
+# In[ ]:
 
 
 # too long to read
@@ -144,21 +163,21 @@ np.unique(df.isna().sum())
 
 # ## Visualise some sequences
 
-# In[138]:
+# In[ ]:
 
 
 # first item
 df.iloc[:,0].plot(figsize=(15,10),marker='*')
 
 
-# In[139]:
+# In[ ]:
 
 
 # last item
 df.iloc[:,-1].plot(figsize=(15,10),marker='*')
 
 
-# In[140]:
+# In[ ]:
 
 
 # zoom in on a subset of time - one year
@@ -169,7 +188,7 @@ df_subset = df[start_date:end_date]
 df_subset.iloc[:,100].plot(figsize=(15,10),marker='*')
 
 
-# In[141]:
+# In[ ]:
 
 
 # zoom in on a subset of time - one day
@@ -180,7 +199,7 @@ df_subset = df[start_date:end_date]
 df_subset.iloc[:,100].plot(figsize=(15,10),marker='*')
 
 
-# In[142]:
+# In[ ]:
 
 
 # zoom in on a subset of time : one day
@@ -203,39 +222,39 @@ df_subset.iloc[:,100].plot(figsize=(15,10),marker='*')
 # * Seasonality: The repeating short-term cycle in the series.
 # * Noise: The random variation in the series.
 
-# In[119]:
+# In[ ]:
 
 
 # Facebook's prophet?
 
 
-# In[143]:
+# In[ ]:
 
 
 from statsmodels.tsa.seasonal import seasonal_decompose
 from matplotlib import pyplot
 
 
-# In[144]:
+# In[ ]:
 
 
 series = df.iloc[:,100]
 
 
-# In[145]:
+# In[ ]:
 
 
 series.plot(figsize=(10,5))
 
 
-# In[86]:
+# In[ ]:
 
 
 # let's read the documentation for this command
 get_ipython().run_line_magic('pinfo', 'seasonal_decompose')
 
 
-# In[146]:
+# In[ ]:
 
 
 # additive seasonality?
@@ -250,7 +269,7 @@ pyplot.show()
 
 # There seems to be no additive seasonality in this time series example, and nothing attributed to random noise.
 
-# In[147]:
+# In[ ]:
 
 
 # multiplicative seasonality?
@@ -268,7 +287,7 @@ pyplot.show()
 
 # ## Group users by usage?
 
-# In[148]:
+# In[ ]:
 
 
 df.sum(axis=0).hist(bins=100)
@@ -281,7 +300,7 @@ df.sum(axis=0).hist(bins=100)
 # 
 # Some info on date offset: https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects
 
-# In[105]:
+# In[ ]:
 
 
 get_ipython().run_line_magic('pinfo', 'df.resample')
@@ -301,14 +320,14 @@ get_ipython().run_line_magic('pinfo', 'df.resample')
 # df_daily.shape
 
 
-# In[149]:
+# In[ ]:
 
 
 df_weekly = df.resample(axis=0,rule='W').mean()
 df_weekly.shape
 
 
-# In[150]:
+# In[ ]:
 
 
 df_weekly.plot(figsize=(15,10))
@@ -324,37 +343,42 @@ df_weekly.plot(figsize=(15,10))
 # * detect and remove data items in the signal that are not relevant, for insance, when a machine was out of order
 # * detect outliers and investigate / correct / drop
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+# There are implementations for all kinds of pre-processing tasks within the pandas and scikit-learn packages. See documentation and tutorials on   
+# https://scikit-learn.org/stable/documentation.html   
+# and   
+# https://pandas.pydata.org/pandas-docs/stable/#
 
 # # Preparation for Classification
 
 # ## Load labels
 
-# In[153]:
+# In[ ]:
 
 
-path = '/Users/elenahensinger/Documents/PROJECTS/2019/09_WorkshopWednesdays_W2/datasets'
+# if loading from local directory
+path = '' # fill in correct data path here
 labels_df = pd.read_csv(path + '/ElectricityLoad_Workshop_Labels.csv',index_col=[0])
+
 labels_df.shape
 
 
-# In[154]:
+# In[ ]:
+
+
+# if loading from google drive
+path = '/content/drive/My Drive/your_directory_for_this_workshop' # adjust the path as needed
+df = pd.read_csv(path + '/ElectricityLoad_Workshop.csv',index_col=0,parse_dates=[0])
+
+labels_df.shape
+
+
+# In[ ]:
 
 
 labels_df.head(2)
 
 
-# In[156]:
+# In[ ]:
 
 
 # how many different labels do we have?
@@ -372,7 +396,7 @@ labels_df.labels.unique()
 # 
 # We will use each column of the data, i.e. each individual user, as an input data entry
 
-# In[227]:
+# In[ ]:
 
 
 # we need column-wise values as arrays
@@ -382,19 +406,19 @@ for one_col in df.columns:
     X.append(df.iloc[:][one_col].values)
 
 
-# In[208]:
+# In[ ]:
 
 
 len(X)
 
 
-# In[209]:
+# In[ ]:
 
 
 X[0]
 
 
-# In[210]:
+# In[ ]:
 
 
 len(X[0])
@@ -402,26 +426,26 @@ len(X[0])
 
 # ### Split into train and test set
 
-# In[228]:
+# In[ ]:
 
 
 y = labels_df.labels.values
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
 
-# In[212]:
+# In[ ]:
 
 
 len(X_train), len(X_test), len(y_train), len(y_test)
 
 
-# In[213]:
+# In[ ]:
 
 
 y_train
 
 
-# In[214]:
+# In[ ]:
 
 
 unique_elements, counts_elements = np.unique(y_train, return_counts=True)
@@ -429,7 +453,7 @@ print("Frequency of unique values of the said array:")
 print(np.asarray((unique_elements, counts_elements)))
 
 
-# In[215]:
+# In[ ]:
 
 
 unique_elements, counts_elements = np.unique(y_test, return_counts=True)
@@ -439,27 +463,27 @@ print(np.asarray((unique_elements, counts_elements)))
 
 # ### Classify
 
-# In[216]:
+# In[ ]:
 
 
 from sklearn.ensemble import RandomForestClassifier
 
 
-# In[229]:
+# In[ ]:
 
 
 # create a classifier instance
 clf_full_timeseries = RandomForestClassifier(n_estimators=100, random_state=0)
 
 
-# In[230]:
+# In[ ]:
 
 
 # fit our training data
 clf_full_timeseries.fit(X_train, y_train)  
 
 
-# In[231]:
+# In[ ]:
 
 
 y_predictions = clf_full_timeseries.predict(X_test)
@@ -468,64 +492,66 @@ print(y_predictions)
 
 # ### Assess our results
 
-# In[232]:
+# In[ ]:
 
 
 from sklearn.metrics import classification_report
 
 
-# In[233]:
+# In[ ]:
 
 
 print(classification_report(y_test, y_predictions, target_names=['class 0', 'class 1']))
 
 
-# **Precision** is the asnwer to 'How many items do we assign to the correct class?'   
-# **Recall** is the anwer to 'How many items that we assign a class are actually from that class?'   
-# **F1-score** is the harmonic mean of precision and recall, calculated by 2* ((precision * recall)/(precision + recall))   
+# **Accuracy** is the answer to 'What proportion of items do we assign to the correct class?'  
+# The next three measures help to interpret the results with focus on one class ('Positive class') vs. the other class or classes ('Negative class').   
+# **Precision** answers the question 'What proportion of items predicted to be of Positive class are actually Positives?'   
+# **Recall** is the answer to 'What proportion of Postive items has been correctly assigned to the Positive class?'   
+# **F1-score** is the harmonic mean of Precision and Recall, calculated by 2* ((precision * recall)/(precision + recall))   
 # Read more on https://en.wikipedia.org/wiki/F1_score
 
-# In[222]:
+# In[ ]:
 
 
 y_predictions
 
 
-# In[223]:
+# In[ ]:
 
 
 y_test
 
 
 # ---
-# Discussion: this went surprisingly well!   
+# Discussion: this went surprisingly well! (We don't expect 100% performance; that is actually something to be sceptical about)   
 # Can we investigate what the features were that the classifier used?
 
-# In[203]:
+# In[ ]:
 
 
 len(clf_full_timeseries.feature_importances_)
 
 
-# In[199]:
+# In[ ]:
 
 
 print(clf_full_timeseries.feature_importances_)
 
 
-# In[201]:
+# In[ ]:
 
 
 np.where(clf_full_timeseries.feature_importances_ != 0)
 
 
-# In[205]:
+# In[ ]:
 
 
 len(np.where(clf_full_timeseries.feature_importances_ != 0)[0])
 
 
-# In[202]:
+# In[ ]:
 
 
 clf_full_timeseries.feature_importances_[np.where(clf_full_timeseries.feature_importances_ != 0)[0]]
@@ -533,7 +559,7 @@ clf_full_timeseries.feature_importances_[np.where(clf_full_timeseries.feature_im
 
 # ## As a comparison with a meaningless dataset
 
-# In[225]:
+# In[ ]:
 
 
 df = pd.read_csv(path + '/ElectricityLoad_Workshop_NonMeaningfulDataset.csv',index_col=0,parse_dates=[0])
@@ -558,6 +584,12 @@ y_predictions = clf_full_timeseries.predict(X_test)
 print(classification_report(y_test, y_predictions, target_names=['class 0', 'class 1']))
 
 
+# --- 
+# The modelling and classification approach with a dataset that does not have any inherent patterns shows results that are around 50% accuracy. Which means in 50% of cases we assign the correct class, which is equivalent to 'by chance'.   
+# This is a result to be expected for a dataset without actual patterns in data. (Unless one chose an unsuitable modelling approach or feature selection...)      
+# 
+# Compared to the results with our previous dataset, we can conclude that the same approach as in the last setup, but with different data, did find patterns in the data. The excellent performance is likely due to the fact that the dataset was 'crafted' for the tutorial in a way that had stark differences within the two classes' data ranges, which was picked up very well by the random forest classifier.
+
 # # Neural network solution
 # 
 # We will not have time to cover solution approaches for time series data with neaural network architectures.
@@ -565,27 +597,3 @@ print(classification_report(y_test, y_predictions, target_names=['class 0', 'cla
 # There are some very good step-by-step tutorials out there for this, take a look at:
 # * 'How to Use the TimeseriesGenerator for Time Series Forecasting in Keras' https://machinelearningmastery.com/how-to-use-the-timeseriesgenerator-for-time-series-forecasting-in-keras/
 # * Deep Learning for time series tutorials https://machinelearningmastery.com/category/deep-learning-time-series/
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
